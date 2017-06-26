@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hangman Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/hangman.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Rye" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-header" id="page_header_id">
+        <div class="main_header_box">
+            <img src="https://image.flaticon.com/icons/png/512/43/43980.png">
+            <h1 class="main_header">HANGMAN</h1>
+        </div>
+        <div class="stripe">
+            <button class="new_game" type="submit" value="Submit">New Game?
+            </button>
+            <span class="stripe_span"></span>
+            <button class="modes" type="submit" value="Submit" id="easy">EASY</button>
+            <button class="modes" type="submit" value="Submit" id="hard">HARD
+            </button>
+        </div>
+    </div>
+    <div class="containers main_container">
+        <div class="hangman_box">
+            <div class="hangman_box_header">
+                Your Guess:
+                <p>enter your guess in the box below,
+                    <br> hit enter to submit!</p>
+            </div>
+            <div class="guess_box">
+                <input class="guess_input" type="text" name="guess" maxlength="1" autocomplete="off">
+                <br>
+                <button class="submit_button" type="submit" value="Submit" id="submit_btn"><span>Submit</span></button>
+                <button class="submit_button" type="submit" value="Submit" id="clear_btn"><span>Reset</span></button>
+                <div class="tracked_guess_box">
+                    <header>Letters Already Guessed</header>
+                    <p class="tracked_guesses"></p>
+                </div>
+                <div class="guesses_remaining">
+                    <span></span>
+                </div>
+            </div>
+            <div class="message_box">
+                <span id="message"></span>
+                <span id="lose_message"></span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/js/hangman.js"></script>
+</body>
+
+</html>
