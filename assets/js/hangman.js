@@ -9,11 +9,11 @@ var randomWordForDisplaySpan = document.querySelector(".stripe_span");
 var hardModeButton = document.querySelector("#hard");
 var easyModeButton = document.querySelector("#easy");
 var newGameButton = document.querySelector(".new_game");
-var conditionMessage = document.querySelector("#lose_message");
+var conditionMessage = document.querySelector(".lose_message");
 var randomWordForDisplay = "";
 var guessesSoFar = [];
 var messageList = ["heck you're as dull as dishwater.", " I reckon your family tree was a shrub.", "I bet you don't know dung from wild honey.", "I bet you couldn't track an elephant in snow."];
-var list = ["bingo", "lugubrious", "ginger", "liquid"];
+var list = ["bingo", "lugubrious", "ginger", "liquid", "standoff", "duel", "saloon", "bourbon"];
 var randomWord = list[Math.floor(Math.random() * list.length)];
 var guessRemaining = 10;
 var rightGuessArray = [];
@@ -56,6 +56,7 @@ userGuess.addEventListener("keypress", function(event) {
 });
 
 newGameButton.addEventListener("click", function() {
+    debugger;
     this.style.display = "none";
     reset();
     gameStart();
@@ -91,6 +92,7 @@ button.addEventListener("click", function() {
 });
 
 function gameStart() {
+    randomWord = randomWordFunction();
     // This section iterates through randomWord and if i == a space it replaces it with
     // it adds a space randomWordForDisplay, otherwise it adds an underscore
     for (var i = 0; i < randomWord.length; i++) {
@@ -117,10 +119,13 @@ function reset() {
     trackedGuesses.textContent = guessesSoFar;
     message.textContent = "";
     conditionMessage.textContent = "";
+    rightGuessArray = [];
+    newGameButton.classList.remove("correct_color");
+    conditionMessage.classList.remove("correct_color");
+
 }
 
 function correctGuess(chr) {
-
     var splits = randomWord.split(chr).length - 1;
     if (splits === 0) {
         guessRemaining--;
@@ -143,12 +148,11 @@ function correctGuess(chr) {
                 youWin();
             }
         } else if (splits === 3) {
-            rightGuessArray.push(chr, chr);
+            rightGuessArray.push(chr, chr, chr);
             if (rightGuessArray.length === randomWord.length) {
                 youWin();
             }
         }
-
         return "There are " + splits + " " + chr + "'s";
     }
 
@@ -170,7 +174,9 @@ function youLose() {
 }
 
 function youWin() {
-    var winMsg = "Hmphh! You got lucky! Try Hard Mode if you're not too yella! hahaha!";
+    var winMsg = "Correct! the word was " + randomWord + "---" + "Hmphh! You got lucky! Try Hard Mode if you're not too yella! hahaha!";
+    newGameButton.classList.add("correct_color");
+    conditionMessage.classList.add("correct_color");
     wins++;
     message.style.display = "none";
     randomWordForDisplaySpan.style.display = "none";
@@ -179,6 +185,10 @@ function youWin() {
     conditionMessage.textContent = winMsg;
 
 
+}
+
+function randomWordFunction() {
+    return list[Math.floor(Math.random() * list.length)];
 }
 
 function randomMessage() {

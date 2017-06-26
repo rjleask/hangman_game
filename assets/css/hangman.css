@@ -189,6 +189,10 @@ body {
     font-size: 70%;
 }
 
+.correct_color {
+    color: #006600;
+}
+
 .highlighted {
     background-color: #ffd966;
 }
