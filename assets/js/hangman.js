@@ -122,9 +122,10 @@ function reset() {
     rightGuessArray = [];
     newGameButton.classList.remove("correct_color");
     conditionMessage.classList.remove("correct_color");
+    conditionMessage.classList.add("losing_message");
     pageHeader.classList.remove("winning_color");
     pageHeader.classList.remove("losing_color");
-    pageHeader.classList.remove("losing_message");
+    pageHeader.classList.remove("lose_message");
 
 }
 // if no chrs in word value is 0 else its in the word splits amount of times
@@ -181,6 +182,7 @@ function youWin() {
     var winMsg = "Correct! the word was " + randomWord + "---" + "Hmphh! You got lucky! Try Hard Mode if you're not too yella! hahaha!";
     newGameButton.classList.add("correct_color");
     pageHeader.classList.add("winning_color");
+    conditionMessage.classList.remove("lose_message");
     conditionMessage.classList.add("correct_color");
     wins++;
     message.style.display = "none";

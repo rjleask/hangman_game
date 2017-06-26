@@ -217,6 +217,10 @@ body {
     background-color: #ffd966;
 }
 
+.lose_message {
+    color: #cc0000;
+}
+
 #easy {
     margin-right: 2%;
     margin-left: 1%;
@@ -247,10 +251,6 @@ body {
 #page_header_id {
     margin: 0;
     padding-bottom: 0;
-}
-
-.lose_message {
-    color: #cc0000;
 }
 
 @media (max-width: 1200px) {
