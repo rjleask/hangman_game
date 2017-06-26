@@ -17,6 +17,7 @@ var list = ["bingo", "lugubrious", "ginger", "liquid", "standoff", "duel", "salo
 var randomWord = list[Math.floor(Math.random() * list.length)];
 var guessRemaining = 10;
 var rightGuessArray = [];
+var pageHeader = document.querySelector("#page_header_id");
 var wins = 0;
 var losses = 0;
 console.log(randomWord);
@@ -56,7 +57,6 @@ userGuess.addEventListener("keypress", function(event) {
 });
 
 newGameButton.addEventListener("click", function() {
-    debugger;
     this.style.display = "none";
     reset();
     gameStart();
@@ -122,9 +122,12 @@ function reset() {
     rightGuessArray = [];
     newGameButton.classList.remove("correct_color");
     conditionMessage.classList.remove("correct_color");
+    pageHeader.classList.remove("winning_color");
+    pageHeader.classList.remove("losing_color");
+    pageHeader.classList.remove("losing_message");
 
 }
-
+// if no chrs in word value is 0 else its in the word splits amount of times
 function correctGuess(chr) {
     var splits = randomWord.split(chr).length - 1;
     if (splits === 0) {
@@ -165,6 +168,7 @@ function clearContent() {
 
 function youLose() {
     var loseMsg = "You play the same way a hog smells after eatin...real bad! hahaha!";
+    pageHeader.classList.add("losing_message");
     losses++;
     message.style.display = "none";
     randomWordForDisplay = "";
@@ -176,6 +180,7 @@ function youLose() {
 function youWin() {
     var winMsg = "Correct! the word was " + randomWord + "---" + "Hmphh! You got lucky! Try Hard Mode if you're not too yella! hahaha!";
     newGameButton.classList.add("correct_color");
+    pageHeader.classList.add("winning_color");
     conditionMessage.classList.add("correct_color");
     wins++;
     message.style.display = "none";

@@ -189,9 +189,29 @@ body {
     font-size: 70%;
 }
 
+
+/*javaScript run*/
+
 .correct_color {
     color: #006600;
 }
+
+
+/*javaScript run*/
+
+.winning_color {
+    background: #66ff66;
+}
+
+
+/*javaScript run*/
+
+.losing_message {
+    background: #cc0000;
+}
+
+
+/*javaScript run*/
 
 .highlighted {
     background-color: #ffd966;
@@ -229,7 +249,7 @@ body {
     padding-bottom: 0;
 }
 
-#lose_message {
+.lose_message {
     color: #cc0000;
 }
 
