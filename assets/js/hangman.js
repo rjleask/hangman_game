@@ -9,7 +9,7 @@ var randomWordForDisplaySpan = document.querySelector(".stripe_span");
 var hardModeButton = document.querySelector("#hard");
 var easyModeButton = document.querySelector("#easy");
 var newGameButton = document.querySelector(".new_game");
-var loseMessage = document.querySelector("#lose_message");
+var conditionMessage = document.querySelector("#lose_message");
 var randomWordForDisplay = "";
 var guessesSoFar = [];
 var messageList = ["heck you're as dull as dishwater.", " I reckon your family tree was a shrub.", "I bet you don't know dung from wild honey.", "I bet you couldn't track an elephant in snow."];
@@ -116,7 +116,7 @@ function reset() {
     guessesSoFar = [];
     trackedGuesses.textContent = guessesSoFar;
     message.textContent = "";
-    loseMessage.textContent = "";
+    conditionMessage.textContent = "";
 }
 
 function correctGuess(chr) {
@@ -132,10 +132,23 @@ function correctGuess(chr) {
             randomMessage();
 
     } else {
-        rightGuessArray.push(chr);
-        if (rightGuessArray.length === randomWord.length) {
-            youWin();
+        if (splits === 1) {
+            rightGuessArray.push(chr);
+            if (rightGuessArray.length === randomWord.length) {
+                youWin();
+            }
+        } else if (splits === 2) {
+            rightGuessArray.push(chr, chr);
+            if (rightGuessArray.length === randomWord.length) {
+                youWin();
+            }
+        } else if (splits === 3) {
+            rightGuessArray.push(chr, chr);
+            if (rightGuessArray.length === randomWord.length) {
+                youWin();
+            }
         }
+
         return "There are " + splits + " " + chr + "'s";
     }
 
@@ -153,14 +166,19 @@ function youLose() {
     randomWordForDisplay = "";
     randomWordForDisplaySpan.style.display = "none";
     newGameButton.style.display = "inline-block";
-    loseMessage.textContent = loseMsg;
+    conditionMessage.textContent = loseMsg;
 }
 
 function youWin() {
-    var msg = "Hmphh! You got lucky! Try Hard Mode if you're not too yella! hahaha!";
-    win++;
+    var winMsg = "Hmphh! You got lucky! Try Hard Mode if you're not too yella! hahaha!";
+    wins++;
+    message.style.display = "none";
     randomWordForDisplaySpan.style.display = "none";
+    randomWordForDisplay = "";
     newGameButton.style.display = "inline-block";
+    conditionMessage.textContent = winMsg;
+
+
 }
 
 function randomMessage() {
